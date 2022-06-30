@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carford Sistema</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+</head>
+
+<body>
+    <nav class="navbar bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="color: white;" href="#">Carford</a>
+            <a class="btn btn-outline-light" style="color: white;" href="{{ url_for('sair') }}">Sair</a>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock content %}
+    
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+    <section>
+        <div class="container mt-3">
+            <a href="{{ url_for('novo_carro', id_cliente=dados.cliente.id) }}" class="btn btn-primary mt-2">Adicionar Carro</a>
+            <a href="{{ url_for('listar_clientes') }}" class="btn btn-primary mt-2">Voltar</a>
+        <div class="container mt-3">
+
+        <div class="container mt-3">
+            <div class="card-deck mb-3">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header text-center">
+                        <h2 class="my-0 font-weight-normal">Lista de Carros</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <p><b>Nome do Cliente: </b>{{ dados.cliente.nome }}</p>
+                        </div>
+                        
+                        <table class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Cor</th>
+                                    <th scope="col">Modelo</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for carro in dados.carros %}
+                                <tr>
+                                    <td>{{ carro.cor }}</td>
+                                    <td>{{ carro.modelo }}</td>
+                                    <td>
+                                        <a class="btn btn-primary" href="{{ url_for('editar_carro', id_carro=carro.id, id_cliente=dados.cliente.id) }}" >Editar</a>
+                                        <a class="btn btn-danger" href="{{ url_for('excluir_carro', id_carro=carro.id, id_cliente=dados.cliente.id) }}" >Excluir</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    {% block modal %} {% endblock %}
+
+{% endblock content %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+    <section>
+        <div class="container mt-5">
+            <form action='/adionar_carro' method="post">
+                <div class="form-group">
+                  <label for="select_cor">Nome do proprietário</label>
+                  <input class="form-control" style="width:300px;" type="text" name="nome_cliente" value="{{ dados.nome_cliente }}" placeholder="Nome do proprietário" readonly>
+                  <input class="form-control" type="hidden" name="id_cliente" value="{{ dados.id_cliente }}">
+                </div>
+                <div class="form-group">
+                  <label for="select_cor">Cor do Veiculo</label>
+                  <select class="form-control" style="width:200px;" id="select_cor" name="select_cor">
+                    {% for cor in dados.cores %}
+                        <option value="{{ cor }}">{{ cor }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="select_modelo">Modelo do veiculo</label>
+                  <select class="form-control" style="width:200px;" id="select_modelo" name="select_modelo">
+                    {% for modelo in dados.modelos %}
+                        <option>{{ modelo }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="mt-2">
+                    <a href="{{url_for('listar_clientes')}}" class="btn btn-danger">Cancelar</a>
+                    <button class="btn btn-primary" type="submit">Salvar</button>
+                </div>
+              </form>
+              {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class=flashes>
+                        {% for message in messages %}
+
+                        <div class="alert alert-danger mt-5" role="alert">{{ message }}</div>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+                {% block body %}{% endblock %}
+        </div>
+        
+    </section>
+
+{% endblock content %}

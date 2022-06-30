@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carford Sistema</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-main-text">
+           <h2>To-Do List App | Nork-Town</h2>
+           <p>Para acessar aplicação utilize o seguintes dados.</p>
+           <p><b>login:</b> admin</p>
+           <p><b>senha:</b> 123456</p>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+                <form method="post" action="/autenticar">
+                    <div class="form-group">
+                    <label>Login</label>
+                    <input type="text" id="input_login" name="input_login" class="form-control" placeholder="Login">
+                    </div>
+                    <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" id="input_senha" name="input_senha" class="form-control" placeholder="Senha">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </form>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class=flashes>
+                        {% for message in messages %}
+
+                        <div class="alert alert-danger mt-5" role="alert">{{ message }}</div>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>
+

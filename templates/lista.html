@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+    <section>
+        <div class="container mt-3">
+            <a href="{{ url_for('novo_cliente') }}" class="btn btn-primary mt-2">Adicionar Cliente</a>
+        <div class="container mt-3">
+
+        <div class="container mt-3">
+            <div class="card-deck mb-3 text-center">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Controle de Automóveis</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Qtd. de cliente.carros</th>
+                                    <th scope="col">Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for cliente in dados.clientes %}
+                                <tr>
+                                    <th scope="row">{{ cliente.id }}</th>
+                                    <td>{{ cliente.nome }}</td>
+                                    {% if (cliente.qtd_carro) == 0 %}
+                                    <td>
+                                        <span class="badge badge-success" style="background-color: green;">Oportunidade
+                                            de venda!</span>
+                                    </td>
+                                    {% else %}
+                                    <td>{{ cliente.qtd_carro }}</td>
+                                    {% endif %}
+
+                                    <td>
+                                        {% if cliente.qtd_carro == 3 %}
+                                        <span class="d-inline-block" tabindex="0" data-toggle="tooltip"
+                                            title="Limite de veiculos atingidos">
+                                            <button class="btn btn-primary" style="pointer-events: none;" type="button"
+                                                disabled>Novo Automóvel</button>
+                                        </span>
+                                        {% else %}
+                                        <a class="btn btn-primary" href="{{ url_for('novo_carro', id_cliente=cliente.id) }}">Novo Automóvel</a>
+                                        {% endif %}
+
+
+                                        {% if cliente.qtd_carro == 0 %}
+                                        <span class="d-inline-block" tabindex="0" data-toggle="tooltip"
+                                            title="Não possui veiculos">
+                                            <button class="btn btn-primary" style="pointer-events: none;" type="button"
+                                                disabled>Detalhes</button>
+                                        </span>
+                                        {% else %}
+                                        <a class="btn btn-primary" href="{{ url_for('listar_carros', id_cliente=cliente.id) }}">Detalhes</a>
+                                        {% endif %}
+                                        <a class="btn btn-danger" href="{{url_for('excluir_cliente', id=cliente.id)}}" >Excluir</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    {% block modal %} {% endblock %}
+
+{% endblock content %}
