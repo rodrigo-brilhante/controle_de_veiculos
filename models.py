@@ -1,4 +1,3 @@
-from msilib.schema import Class
 from nork_town import db
 class Carro():
     MODELOS = ['Hatch', 'Sedan', 'Conversível']

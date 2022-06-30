@@ -1,8 +1,6 @@
 from nork_town import app, db
-from flask import render_template, request, redirect, session, flash, url_for, send_from_directory
+from flask import render_template, request, redirect, session, flash, url_for
 from models import Carros, Carro, Clientes
-from helpers import FormularioUsuario
-from flask_bcrypt import check_password_hash
 
 @app.route('/listar_carros/<int:id_cliente>')
 def listar_carros(id_cliente):

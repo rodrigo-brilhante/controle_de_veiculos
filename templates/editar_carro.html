@@ -14,7 +14,7 @@
                   <select class="form-control" style="width:200px;" id="select_cor" name="select_cor">
                     {% for cor in dados.cores %}
                         {% if cor == dados.carro.cor %}
-                            <option select value="{{ cor }}">{{ cor }}</option>
+                            <option selected value="{{ cor }}">{{ cor }}</option>
                         {% else %}
                             <option value="{{ cor }}">{{ cor }}</option>
                         {% endif %}
@@ -26,7 +26,7 @@
                   <select class="form-control" style="width:200px;" id="select_modelo" name="select_modelo">
                     {% for modelo in dados.modelos %}
                         {% if modelo == dados.carro.modelo %}
-                            <option select value="{{ modelo }}">{{ modelo }}</option>
+                            <option selected value="{{ modelo }}">{{ modelo }}</option>
                         {% else %}
                             <option value="{{ modelo }}">{{ modelo }}</option>
                         {% endif %}

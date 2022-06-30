@@ -1,8 +1,6 @@
 from nork_town import app, db
-from flask import render_template, request, redirect, session, flash, url_for, send_from_directory
+from flask import render_template, request, redirect, session, flash, url_for
 from models import Acesso, Carros, Clientes
-from helpers import FormularioUsuario
-from flask_bcrypt import check_password_hash
 
 @app.route('/')
 def listar_clientes():
