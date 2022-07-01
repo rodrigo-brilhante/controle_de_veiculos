@@ -1,10 +1,11 @@
+import os
 SECRET_KEY = '@nork'
-
+SQLALCHEMY_TRACK_MODIFICATIONS = False
 SQLALCHEMY_DATABASE_URI = \
-    '{SGBD}://{usuario}:{senha}@{servidor}/{database}'.format(
-        SGBD = 'mysql+mysqlconnector',
-        usuario = 'root',
-        senha = 'nork',
-        servidor = 'localhost',
-        database = 'nork_town'
+    'mysql+mysqlconnector://{}:{}@{}/{}'.format(
+        os.getenv('DB_USER', 'root'),
+        os.getenv('DB_PASSWORD', 'nork'),
+        os.getenv('DB_HOST', 'mysql'),
+        os.getenv('DB_NAME', 'nork_town')
     )
+    
