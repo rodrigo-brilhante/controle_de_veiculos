@@ -1,4 +1,4 @@
-from nork_town import app, db
+from app import app, db
 from flask import render_template, request, redirect, session, flash, url_for
 from models import Carros, Carro, Clientes
 

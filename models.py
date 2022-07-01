@@ -1,4 +1,4 @@
-from nork_town import db
+from app import db
 class Carro():
     MODELOS = ['Hatch', 'Sedan', 'Conversível']
     COR = ['Amarelo', 'Azul', 'Cinza']
